@@ -37,14 +37,17 @@ const Home: NextPage = () => {
 
   return (
     <div className='text-center'>
-      <p>tofdo</p>
+      <p>todo</p>
       <input
+        className='p-1'
         type={'text'}
         placeholder='add todo'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <button onClick={addTodo}>追加</button>
+      <button className='ml-2' onClick={addTodo}>
+        追加
+      </button>
 
       <div>
         {tasks.map((task, index) => (
