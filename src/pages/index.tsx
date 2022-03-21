@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import React, { useState } from 'react';
+import Todo from '../components/Todo';
 const Home: NextPage = () => {
   const [title, setTitle] = useState<string>('');
   const [tasks, setTasks] = useState([
@@ -38,31 +39,26 @@ const Home: NextPage = () => {
   return (
     <div className='text-center'>
       <p>todo</p>
-      <form action='submit'>
-        <input
-          className='p-1'
-          type={'text'}
-          placeholder='add todo'
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <button className='ml-2' onClick={addTodo}>
-          追加
-        </button>
-      </form>
+
+      <input
+        className='p-1'
+        type={'text'}
+        placeholder='add todo'
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <button className='ml-2' onClick={(e) => addTodo(e)}>
+        追加
+      </button>
 
       <div>
         {tasks.map((task, index) => (
-          <div key={index} className='flex items-center justify-center space-x-10'>
-            <div className='flex'>
-              <label className='inline-flex items-center mr-4'>
-                <input type='checkbox' onClick={() => completeTodo(index)} />
-              </label>
-              <h1 style={{ textDecoration: task.completed ? 'line-through' : '' }}>{task.title}</h1>
-            </div>
-            <div className='flex justify-evenly'>
-              <button onClick={() => deleteTodo(index)}>delete</button>
-            </div>
+          <div key={index}>
+            <Todo
+              task={task}
+              completeTodo={() => completeTodo(index)}
+              deleteTodo={() => deleteTodo(index)}
+            />
           </div>
         ))}
       </div>
