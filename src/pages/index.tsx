@@ -38,16 +38,18 @@ const Home: NextPage = () => {
   return (
     <div className='text-center'>
       <p>todo</p>
-      <input
-        className='p-1'
-        type={'text'}
-        placeholder='add todo'
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <button className='ml-2' onClick={addTodo}>
-        追加
-      </button>
+      <form action='submit'>
+        <input
+          className='p-1'
+          type={'text'}
+          placeholder='add todo'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <button className='ml-2' onClick={addTodo}>
+          追加
+        </button>
+      </form>
 
       <div>
         {tasks.map((task, index) => (
